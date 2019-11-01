@@ -1,13 +1,21 @@
 package com.dbuiviet.spring.learnSpringBoot.model;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class ToDo {
     private int id;
     private String user;
+
+    @Size(min = 10, message = "Enter at least 10 characters")
     private String desc;
+
     private Date deadline;
     private boolean finished;
+
+    public ToDo(){
+        super();
+    }
 
     public ToDo(int id, String user, String desc, Date deadline, boolean finished) {
         this.id = id;

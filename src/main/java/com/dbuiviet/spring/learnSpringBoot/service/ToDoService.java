@@ -15,7 +15,7 @@ public class ToDoService {
 
     static {
         todos.add(new ToDo(1, "dbuiviet", "Learn Spring MVC", new Date(), false));
-        todos.add(new ToDo(2, "in28Minutes", "Learn Struts", new Date(), false));
+        todos.add(new ToDo(2, "dbuiviet", "Learn Struts", new Date(), false));
         todos.add(new ToDo(3, "dbuiviet", "Learn Hibernate", new Date(), false));
     }
 
@@ -42,7 +42,22 @@ public class ToDoService {
             ToDo todo = iterator.next();
             if (todo.getId() == id){
                 iterator.remove();
+                todoCount--;
             }
         }
+    }
+
+    public ToDo getToDo(int id) {
+        for (ToDo todo : todos){
+            if (todo.getId() == id){
+                return todo;
+            }
+        }
+        return null;
+    }
+
+    public void updateToDo(ToDo todo) {
+        todos.remove(todo.getId());
+        todos.add(todo);
     }
 }
