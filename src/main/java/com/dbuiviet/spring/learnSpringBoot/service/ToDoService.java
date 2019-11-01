@@ -11,26 +11,28 @@ import java.util.List;
 @Service
 public class ToDoService {
     private static List<ToDo> todos = new ArrayList<>();
-    private static int todoCount = 3;
+    public static int todoCount = 3;
 
     static {
-        todos.add(new ToDo(1, "in28Minutes", "Learn Spring MVC", new Date(), false));
+        todos.add(new ToDo(1, "dbuiviet", "Learn Spring MVC", new Date(), false));
         todos.add(new ToDo(2, "in28Minutes", "Learn Struts", new Date(), false));
-        todos.add(new ToDo(3, "in28Minutes", "Learn Hibernate", new Date(), false));
+        todos.add(new ToDo(3, "dbuiviet", "Learn Hibernate", new Date(), false));
     }
 
     public List<ToDo> retrieveToDos(String user){
-        List<ToDo> todo = new ArrayList<>();
-        for (ToDo td : todo){
+        List<ToDo> userToDo = new ArrayList<>();
+        for (ToDo td : todos){
             if (td.getUser().equalsIgnoreCase(user)){
-                todo.add(td);
+                userToDo.add(td);
             }
         }
-        return todo;
+        //System.out.println("retrieveToDos: " + userToDo.toString());
+        return userToDo;
     }
 
-    public void addToDo (int id, String user, String desc, Date deadline, boolean finished){
-        todos.add(new ToDo(id, user, desc, deadline, finished));
+    public void addToDo (String user, String desc, Date deadline, boolean finished){
+        todoCount++;
+        todos.add(new ToDo(todoCount, user, desc, deadline, finished));
     }
 
     public void deleteToDo (int id) {

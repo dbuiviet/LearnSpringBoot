@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="firstspringboot" default="all">
+<project name="learnspringboot" default="all">
   
   
   <property file="learnspringboot.properties"/>

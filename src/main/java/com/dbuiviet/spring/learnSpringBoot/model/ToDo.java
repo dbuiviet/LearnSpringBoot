@@ -83,7 +83,7 @@ public class ToDo {
 
     @Override
     public String toString() {
-        return String.format("Tdo [id=%s, user=%s, desc=%s, deadline=%s, finished=%s]",
+        return String.format("ToDo [id=%s, user=%s, desc=%s, deadline=%s, finished=%s]",
                 id, user, desc, deadline, finished);
     }
 }
