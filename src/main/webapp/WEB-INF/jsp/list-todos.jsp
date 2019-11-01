@@ -3,11 +3,14 @@
 <html>
 <head>
     <title>ToDo's for ${name}</title>
+    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<H1><b>Your ToDo's</b></H1>
-<table>
-    <caption><b>Your ToDos</b></caption>
+<div class="container">
+<H1><b>${name} ToDo's</b></H1>
+    <caption align="center"><b>Your ToDos are</b></caption>
+<table class="table table-striped">
+
     <thead>
         <tr>
             <th>Description</th>
@@ -26,6 +29,9 @@
     </tbody>
 </table>
 
-<br/><a href="/add-todo">Add a ToDo</a>
+    <div><a class="button" href="/add-todo">Add a ToDo</a></div>
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</div>
 </body>
 </html>
