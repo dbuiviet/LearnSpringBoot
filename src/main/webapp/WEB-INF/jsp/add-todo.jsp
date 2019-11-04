@@ -1,11 +1,6 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="common/header.jspf"%>
+<%@include file="common/navigation.jspf"%>
 
-<html>
-<head>
-    <title>First Web Application</title>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 <div class="container">
     <form:form method="post" modelAttribute="addToDo">
         <form:hidden path="id"/>
@@ -23,15 +18,5 @@
         <button type="submit" class="btn btn-success">Add ToDo</button>
     </form:form>
 </div>
-<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
-<script>
-    $('#deadline').datepicker({
-        format : 'dd/mm/yyyy'
-    });
-</script>
-
-</body>
-</html>
+<%@include file="common/footer.jspf"%>

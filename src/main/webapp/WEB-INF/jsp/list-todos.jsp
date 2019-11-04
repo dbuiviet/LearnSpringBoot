@@ -1,12 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="common/header.jspf"%>
+<%@include file="common/navigation.jspf"%>
 
-<html>
-<head>
-    <title>ToDo's for ${name}</title>
-    <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+
 <div class="container">
 <H1><b>${name} ToDo's</b></H1>
     <caption align="center"><b>Your ToDos are</b></caption>
@@ -38,5 +33,5 @@
     <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </div>
-</body>
-</html>
+
+<%@include file="common/footer.jspf"%>
