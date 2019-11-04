@@ -3,12 +3,15 @@ package com.dbuiviet.spring.learnSpringBoot.controller;
 import com.dbuiviet.spring.learnSpringBoot.model.ToDo;
 import com.dbuiviet.spring.learnSpringBoot.service.ToDoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -16,6 +19,13 @@ import java.util.Date;
 public class ToDoController {
     @Autowired
     ToDoService service;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        // Date - dd/MM/yyyy
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
     public String showListToDoPage(ModelMap model){
@@ -40,9 +50,10 @@ public class ToDoController {
         }
 
         model.put("desc", todo.getDesc());
+        model.put("deadline", todo.getDeadline());
         String name = (String) model.get("name");
 
-        service.addToDo(name, todo.getDesc(), new Date(),false);
+        service.addToDo(name, todo.getDesc(), todo.getDeadline(),false);
 
         return "redirect:/list-todos";
     }
@@ -66,11 +77,13 @@ public class ToDoController {
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
-    public String updateToDo(@Valid @ModelAttribute("addToDo") ToDo todo, BindingResult result){
+    public String updateToDo(ModelMap model, @Valid @ModelAttribute("addToDo") ToDo todo, BindingResult result){
 
         if (result.hasErrors()){
             return "add-todo";
         }
+
+        todo.setUser((String) model.get("name"));
 
         service.updateToDo(todo);
 

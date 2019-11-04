@@ -57,7 +57,9 @@ public class ToDoService {
     }
 
     public void updateToDo(ToDo todo) {
-        todos.remove(todo.getId());
-        todos.add(todo);
+        int index = todo.getId();
+
+        todos.remove(todo);
+        todos.add((index-1), todo);
     }
 }
